@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VoteMidias</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  </head>
+  <body>
+    {% if medias_list %} 
+        <div class="container-fluid mt-5">
+            <div class="row align-items-stretch justify-content-center">
+                {% for media in medias_list %}
+                    <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+                        <div class="card h-100">
+                            <img src="{{ media.image }}" class="card-img-top" alt="..." />
+                            <div class="card-body">
+                                <h5 class="card-title">{{ media.title }}</h5>
+                                <p class="card-text">{{ media.description }}</p>
+                                <a href="#" class="btn btn-primary">{{ media.likes }}</a>
+                                <a href="#" class="btn btn-primary">{{ media.dislikes }}</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% if forloop.counter|divisibleby:5 %}
+                        </div><div class="row align-items-stretch justify-content-center"> <!-- fecha a linha e abre uma nova a cada 5 cards -->
+                    {% endif %}
+                {% endfor %} 
+            </div>
+        </div>
+    {% else %}
+        <p>Não há mídias disponíveis.</p>
+    {% endif %}
+  </body>
+</html>

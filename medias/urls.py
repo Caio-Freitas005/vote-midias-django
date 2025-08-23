@@ -3,5 +3,5 @@ from . import views
 
 app_name = "medias"
 urlpatterns = [
-    path("", views.IndexView.as_view(), name="index"),
+    path("", views.MediasView.as_view(), name="medias"),
 ]
