@@ -17,3 +17,18 @@ class Vote(models.Model):
     class Meta:
         unique_together = ("user", "media")
         ordering = ["-id"]
+
+    @classmethod
+    def register_vote(cls, user, media, vote_type):
+        vote, created = cls.objects.get_or_create(user=user, media=media)
+        if not created:
+            if vote.vote_type == vote_type:
+                vote.delete()
+                return False  # Voto removido
+            else:
+                vote.vote_type = vote_type
+                vote.save()
+        else:
+            vote.vote_type = vote_type
+            vote.save()
+        return True  # Voto registrado ou atualizado
