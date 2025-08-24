@@ -1,0 +1,31 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container text-center mt-4 mb-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-3 col-md-4 col-sm-6 mt-3">
+            <div class="card card-like text-bg-dark">
+                <div class="card-body text-like">
+                    <h5 class="card-title">Total 
+                        <i class="bi bi-hand-thumbs-up-fill"></i>
+                    </h5>
+                    <p id="total-likes" class="card-text fs-4 fw-bold"></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mt-3">
+            <div class="card card-dislike text-bg-dark">
+                <div class="card-body text-dislike">
+                    <h5 class="card-title">Total 
+                        <i class="bi bi-hand-thumbs-down-fill"></i>
+                    </h5>
+                    <p id="total-dislikes" class="card-text fs-4 fw-bold"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt-5">
+    {% include 'medias/medias.html' %}
+</div>
+{% endblock %}
